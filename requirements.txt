@@ -1,0 +1,13 @@
+altgraph==0.17.4
+distro==1.9.0
+packaging==24.2
+pexpect==4.9.0
+ptyprocess==0.7.0
+pyinstaller==6.12.0
+pyinstaller-hooks-contrib==2025.1
+PyQt6==6.8.1
+PyQt6-Qt6==6.8.2
+PyQt6-WebEngine==6.8.0
+PyQt6-WebEngine-Qt6==6.8.2
+PyQt6_sip==13.10.0
+setuptools==75.8.0
