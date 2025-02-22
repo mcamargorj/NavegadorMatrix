@@ -17,11 +17,12 @@
 ---
 ## 💖 Contribua!
 
-Se você acredita em segurança digital, sua contribuição pode ser um marco no desenvolvimento deste projeto!
+Quero continuar criando novos apps e trazendo novidades, mas para isso preciso da sua ajuda. Qualquer contribuição será muito bem-vinda!
 
-Caso queira realizar alguma contribuição, clique no link abaixo para fazer sua doação:
+Clique no link abaixo para fazer sua doação:
 
 [**Faça uma doação no PayPal**](https://www.paypal.com/donate/?business=3ZQZK7TPGPSAA&no_recurring=0&item_name=Ajude+a+fortalecer+a+seguran%C3%A7a+digital%21+Sua+contribui%C3%A7%C3%A3o+faz+a+diferen%C3%A7a+no+futuro+do+NavegadorMatrix.&currency_code=BRL)
+
 
 
 ## 🛠 Instalação
