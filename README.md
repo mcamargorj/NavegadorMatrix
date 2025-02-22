@@ -17,11 +17,11 @@
 ---
 ## 💖 Contribua!
 
-Quero continuar criando novos apps e trazendo novidades, mas para isso preciso da sua ajuda. Qualquer contribuição será muito bem-vinda!
+Ajude a fortalecer o desenvolvimento seguro! Sua contribuição faz a diferença no futuro da MSCHelp.
 
 Clique no link abaixo para fazer sua doação:
 
-[**Faça uma doação no PayPal**](https://www.paypal.com/donate/?business=3ZQZK7TPGPSAA&no_recurring=0&item_name=Ajude+a+fortalecer+a+seguran%C3%A7a+digital%21+Sua+contribui%C3%A7%C3%A3o+faz+a+diferen%C3%A7a+no+futuro+do+NavegadorMatrix.&currency_code=BRL)
+[**Faça uma doação no PayPal**](https://www.paypal.com/donate/?business=3ZQZK7TPGPSAA&no_recurring=0&item_name=Ajude+a+fortalecer+o+desenvolvimento+seguro%21+Sua+contribui%C3%A7%C3%A3o+faz+a+diferen%C3%A7a+no+futuro+da+MSCHelp.&currency_code=BRL)
 
 
 
