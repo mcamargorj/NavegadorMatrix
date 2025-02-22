@@ -15,6 +15,14 @@
 - **Design temático**: O design do navegador foi inspirado no filme "Matrix" e no universo hacker, proporcionando uma experiência única para os usuários que curtem esse tema.
 
 ---
+## 💖 Contribua!
+
+Se você acredita em segurança digital, sua contribuição pode ser um marco no desenvolvimento deste projeto!
+
+Caso queira realizar alguma contribuição, clique no link abaixo para fazer sua doação:
+
+[**Faça uma doação no PayPal**](https://www.paypal.com/donate/?business=3ZQZK7TPGPSAA&no_recurring=0&item_name=Ajude+a+fortalecer+a+seguran%C3%A7a+digital%21+Sua+contribui%C3%A7%C3%A3o+faz+a+diferen%C3%A7a+no+futuro+do+NavegadorMatrix.&currency_code=BRL)
+
 
 ## 🛠 Instalação
 
@@ -37,3 +45,4 @@ pip install -r requirements.txt
 
 # Executar o NavegadorMatrix
 python navegadormatrix.py
+
