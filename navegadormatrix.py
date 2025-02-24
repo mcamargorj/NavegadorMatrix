@@ -51,8 +51,8 @@ class TerminalTab(QWidget):
         self.layout = QVBoxLayout(self)
         self.terminal_output = QTextEdit()
         self.terminal_output.setReadOnly(True)
-        self.terminal_output.setFont(QFont("Courier New", 12))  # Fonte monoespaçada
-        self.terminal_output.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)  # Desativar quebra de linha
+        self.terminal_output.setFont(QFont("Courier New", 12))  
+        self.terminal_output.setLineWrapMode(QTextEdit.LineWrapMode.NoWrap)  
         self.layout.addWidget(self.terminal_output)
 
         self.terminal_input = QLineEdit()
@@ -62,7 +62,7 @@ class TerminalTab(QWidget):
         self.process = None
         self.timer = QTimer()
         self.timer.timeout.connect(self.ler_saida)
-        self.timer.start(100)  # Verifica a saída a cada 100 ms
+        self.timer.start(100)  
 
     def iniciar_processo(self):
         self.process = pexpect.spawn("/bin/bash", encoding="utf-8")
@@ -157,12 +157,17 @@ class Navegador(QMainWindow):
             if widget.process:
                 widget.process.terminate() 
         self.abas.removeTab(indice)
-
+   
     def navegar_url(self):
         url_texto = self.url_bar.text()
         if not url_texto.startswith("http"):
             url_texto = "http://" + url_texto
-        self.abas.currentWidget().setUrl(QUrl(url_texto))
+
+        
+        if self.abas.count() == 0:
+            self.adicionar_nova_aba(QUrl(url_texto), "Nova Aba")
+        else:
+            self.abas.currentWidget().setUrl(QUrl(url_texto))
 
     def mostrar_terminal(self):
         terminal_tab = TerminalTab()
