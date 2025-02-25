@@ -10,6 +10,10 @@ a = Analysis(
 
 
     hiddenimports=[
+        'sys',
+        'os',
+        'pexpect',
+        're',
         'PyQt6',
         'PyQt6.QtCore',
         'PyQt6.QtGui',
@@ -18,8 +22,8 @@ a = Analysis(
         'PyQt6.QtWebEngineWidgets',
         'platform',
         'distro',
-        'pexpect',
-        're'
+        'shutil'
+        
     ],
 
     hookspath=[],

@@ -10,12 +10,20 @@ from PyQt6.QtCore import QUrl, QTimer
 from PyQt6.QtGui import QFont, QIcon
 import platform
 import distro
-
+import shutil  
 
 # Developed By MSCHelp
 
+# Defini um cache temporário para aumentar a velocidade, mas ele é apagado ao fechar a janela do navegador.
+# Assim garantindo a segurança dos dados do usuário
+cache_dir = os.path.expanduser('~/.cache/navegador_matrix')
+if not os.path.exists(cache_dir):
+    os.makedirs(cache_dir)
 
-os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--disable-gpu --disable-software-rasterizer --disable-gpu-compositing --disable-accelerated-video-decode --enable-fast-unload --disable-http2"
+os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = f"--disk-cache-dir={cache_dir} --enable-webgl --disable-gpu"
+
+# Se ficar muito lento, substituir a linha de os.environ pela abaixo.
+# os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--disable-gpu --disable-software-rasterizer --disable-gpu-compositing --disable-accelerated-video-decode --enable-fast-unload --disable-http2"
 
 
 
@@ -37,17 +45,14 @@ def criar_navegador():
     navegador.setUrl(QUrl("https://www.google.com"))
     return navegador
 
-
 def remover_escape_ansi(texto):
     ansi_escape = re.compile(r'(\x1B\[|\x9B)[0-?]*[ -/]*[@-~]|\x1B]0;.*?\x07')
     return ansi_escape.sub("", texto)
-
 
 class TerminalTab(QWidget):
     def __init__(self, parent=None):
         super().__init__(parent)
 
-        
         self.layout = QVBoxLayout(self)
         self.terminal_output = QTextEdit()
         self.terminal_output.setReadOnly(True)
@@ -73,9 +78,8 @@ class TerminalTab(QWidget):
         self.terminal_output.append("Bem-vindo ao Terminal Integrado!")
         self.terminal_output.append(f"Sistema operacional: {sistema} {platform.release()}")
         self.terminal_output.append(f"Diretório atual: {os.getcwd()}")
-        self.terminal_output.append("Digite 'help' para ver os comandos disponíveis.")
+        self.terminal_output.append("Digite 'help' para ver os comandos disponíveis.\n")
         self.terminal_output.append("🖥️nav@matrix:~$ ")
-
 
     def enviar_comando(self):
         """Envia um comando para o processo em execução."""
@@ -88,7 +92,6 @@ class TerminalTab(QWidget):
             self.process.sendline(comando)
         
         self.terminal_input.clear()
-
 
     def ler_saida(self):
         """Lê a saída do processo e exibe no terminal."""
@@ -145,25 +148,28 @@ class Navegador(QMainWindow):
         self.url_bar.returnPressed.connect(self.navegar_url)
 
     def adicionar_nova_aba(self, url, titulo):
-        navegador = criar_navegador()
+        navegador = QWebEngineView()  
+        navegador.setUrl(url)
         indice = self.abas.addTab(navegador, titulo)
         self.abas.setCurrentIndex(indice)
-        navegador.setUrl(url)
-        navegador.urlChanged.connect(lambda u: self.url_bar.setText(u.toString()))
+
+        navegador.urlChanged.connect(lambda u: self.atualizar_titulo_aba(indice, u))
+
+    def atualizar_titulo_aba(self, indice, url):
+     
+        navegador = self.abas.widget(indice)
+        if isinstance(navegador, QWebEngineView):
+            navegador.page().titleChanged.connect(lambda title: self.abas.setTabText(indice, title))
 
     def fechar_aba(self, indice):
         widget = self.abas.widget(indice)
-        if isinstance(widget, TerminalTab):
-            if widget.process:
-                widget.process.terminate() 
         self.abas.removeTab(indice)
-   
+
     def navegar_url(self):
         url_texto = self.url_bar.text()
         if not url_texto.startswith("http"):
             url_texto = "http://" + url_texto
 
-        
         if self.abas.count() == 0:
             self.adicionar_nova_aba(QUrl(url_texto), "Nova Aba")
         else:
@@ -174,6 +180,17 @@ class Navegador(QMainWindow):
         indice = self.abas.addTab(terminal_tab, "Terminal")
         self.abas.setCurrentIndex(indice)
         terminal_tab.iniciar_processo()
+
+    def closeEvent(self, event):
+   
+        self.limpar_cache()
+        event.accept()
+
+    def limpar_cache(self):
+   
+        if os.path.exists(cache_dir):
+            shutil.rmtree(cache_dir)
+    
 
 if __name__ == "__main__":
     app_navegadormatrix = QApplication(sys.argv)
