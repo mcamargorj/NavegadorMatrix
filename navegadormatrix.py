@@ -25,9 +25,6 @@ os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = f"--disk-cache-dir={cache_dir} --enab
 # Se ficar muito lento, substituir a linha de os.environ pela abaixo.
 # os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--disable-gpu --disable-software-rasterizer --disable-gpu-compositing --disable-accelerated-video-decode --enable-fast-unload --disable-http2"
 
-
-
-
 ESTILO_MATRIX = """
     QMainWindow { background-color: #000000; }
     QToolBar { background-color: #111111; border: 1px solid #00ff00; padding: 2px; }
@@ -82,7 +79,6 @@ class TerminalTab(QWidget):
         self.terminal_output.append("🖥️nav@matrix:~$ ")
 
     def enviar_comando(self):
-        """Envia um comando para o processo em execução."""
         comando = self.terminal_input.text().strip()
         
         if comando.lower() == "clear":
@@ -94,7 +90,6 @@ class TerminalTab(QWidget):
         self.terminal_input.clear()
 
     def ler_saida(self):
-        """Lê a saída do processo e exibe no terminal."""
         if self.process and self.process.isalive():
             try:
                 saida = self.process.read_nonblocking(size=1000, timeout=0)
