@@ -27,7 +27,7 @@ os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = f"--disk-cache-dir={cache_dir} --enab
 
 
 
-
+# Estilo CSS Matrix
 ESTILO_MATRIX = """
     QMainWindow { background-color: #000000; }
     QToolBar { background-color: #111111; border: 1px solid #00ff00; padding: 2px; }
