@@ -25,6 +25,9 @@ os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = f"--disk-cache-dir={cache_dir} --enab
 # Se ficar muito lento, substituir a linha de os.environ pela abaixo.
 # os.environ["QTWEBENGINE_CHROMIUM_FLAGS"] = "--disable-gpu --disable-software-rasterizer --disable-gpu-compositing --disable-accelerated-video-decode --enable-fast-unload --disable-http2"
 
+
+
+
 ESTILO_MATRIX = """
     QMainWindow { background-color: #000000; }
     QToolBar { background-color: #111111; border: 1px solid #00ff00; padding: 2px; }
